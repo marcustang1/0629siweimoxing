@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #F5F5F7;
+  --color-card: #FFFFFF;
+  --color-primary: #1D1D1F;
+  --color-secondary: #555555;
+  --color-accent-rgb: 59 130 246;
+  --color-separator: #F3F4F6;
+}
+
+@layer utilities {
+  .shadow-accent-lg {
+    box-shadow: 0 10px 25px -3px rgb(var(--color-accent-rgb) / 0.15),
+                0 4px 6px -4px rgb(var(--color-accent-rgb) / 0.1);
+  }
+  
+  .animate-slideInUp {
+    animation: slideInUp 0.8s ease-out forwards;
+  }
+  
+  .animation-delay-300 {
+    animation-delay: 0.3s;
+    opacity: 0;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-primary antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold text-primary;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl leading-tight;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl leading-snug;
+  }
+  
+  h3 {
+    @apply text-xl md:text-2xl leading-relaxed;
+  }
+  
+  p {
+    @apply text-secondary leading-relaxed;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 rounded-xl font-medium transition-all duration-300;
+  }
+  
+  .btn-primary {
+    @apply bg-[rgb(var(--color-accent-rgb)/0.9)] text-white shadow-accent-lg hover:bg-accent hover:shadow-accent-lg transform hover:-translate-y-0.5 hover:scale-[1.02];
+  }
+  
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+  }
+  
+  .section {
+    @apply py-16 md:py-24;
+  }
+  
+  .card {
+    @apply bg-card rounded-2xl p-6 shadow-sm transition-all duration-300 hover:shadow-md;
+  }
+  
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
