@@ -39,7 +39,6 @@ export default function Home() {
   const [showModelSelector, setShowModelSelector] = useState(false);
   const [showLimitDialog, setShowLimitDialog] = useState(false);
   
-  // Usage tracking state
   const TRIAL_LIMIT = 3;
 
   const [apiService] = useState(() => new ClientAPIService());
@@ -47,8 +46,7 @@ export default function Home() {
   
   // Load initial usage count on mount
   useEffect(() => {
-    // We can directly read from usageStorage when needed, 
-    // no need to sync to a state variable that isn't driving UI.
+    // No longer needed to set state
   }, []);
 
   // Helper functions for state updates
@@ -91,7 +89,7 @@ export default function Home() {
     if (currentUsage >= TRIAL_LIMIT) {
       console.log('Usage limit reached. Aborting analysis.');
       setShowLimitDialog(true);
-      return;
+      return; // ABORT
     }
 
     // Move to next step in UI

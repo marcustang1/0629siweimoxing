@@ -1,5 +1,5 @@
 import React from 'react';
-import { AlertTriangle } from 'lucide-react';
+import { X, AlertTriangle } from 'lucide-react';
 
 interface AlertDialogProps {
   isOpen: boolean;
@@ -37,7 +37,15 @@ const AlertDialog: React.FC<AlertDialogProps> = ({
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale">
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale relative">
+        <button
+          type="button"
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-500 transition-colors"
+          onClick={onClose}
+          aria-label="Close"
+        >
+          <X className="h-6 w-6" />
+        </button>
         <div className="p-6">
           <div className="flex items-start">
             <div className="flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
